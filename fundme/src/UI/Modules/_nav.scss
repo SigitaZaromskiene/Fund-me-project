@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 30px;
+  &__logo {
+    font-size: 1.5rem;
+    &--border {
+      border: 1px solid $mainFontColor;
+      margin-top: 6px;
+    }
+  }
+}
