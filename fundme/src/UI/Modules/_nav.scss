@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 30px;
+  &__logo {
+    font-size: 1.8rem;
+    &--border {
+      border: 1px solid $mainFontColor;
+      margin-top: 6px;
+    }
+  }
+
+  &__middle,
+  &__right {
+    display: flex;
+    gap: 25px;
+    button {
+      border: 2px solid $mainGreen;
+      padding: 5px 15px;
+      color: $mainFontColor;
+      font-size: 1.5rem;
+      background-color: white;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+  }
+
+  .active:hover {
+    background-color: $mainGreen;
+    color: white;
+  }
+}
