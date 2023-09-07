@@ -1,4 +1,7 @@
+import { useContext } from "react";
+import { Global } from "../Contexts/Global";
 function Nav() {
+  const { setRoute, route } = useContext(Global);
   return (
     <nav className="nav">
       <div className="nav__logo">
@@ -6,12 +9,32 @@ function Nav() {
         <div className="nav__logo--border"></div>
       </div>
       <div className="nav__middle">
-        <button>Start Fundraising</button>
-        <button>Fundraisers</button>
+        <button
+          className={route === "start" ? "active" : null}
+          onClick={() => setRoute("start")}
+        >
+          Start Fundraising
+        </button>
+        <button
+          className={route === "fundraisers" ? "active" : null}
+          onClick={() => setRoute("fundraisers")}
+        >
+          Fundraisers
+        </button>
       </div>
       <div className="nav__right">
-        <button>Log in</button>
-        <button>Sign in</button>
+        <button
+          className={route === "login" ? "active" : null}
+          onClick={() => setRoute("login")}
+        >
+          Log in
+        </button>
+        <button
+          className={route === "register" ? "active" : null}
+          onClick={() => setRoute("register")}
+        >
+          Sign in
+        </button>
       </div>
     </nav>
   );
