@@ -1,0 +1,8 @@
+.hero-section {
+  height: 500px;
+  &__img {
+    background-image: url("../img/people.jpg");
+    height: 100%;
+    background-size: cover;
+  }
+}

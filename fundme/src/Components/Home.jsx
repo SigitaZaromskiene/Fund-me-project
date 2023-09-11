@@ -1,7 +1,9 @@
-import Nav from "./Nav";
-
 function Home() {
-  return <div>HOME</div>;
+  return (
+    <div className="hero-section">
+      <div className="hero-section__img"></div>
+    </div>
+  );
 }
 
 export default Home;

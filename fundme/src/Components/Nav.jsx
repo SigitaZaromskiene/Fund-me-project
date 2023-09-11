@@ -10,10 +10,10 @@ function Nav() {
       </div>
       <div className="nav__middle">
         <button
-          className={route === "start" ? "active" : null}
-          onClick={() => setRoute("start")}
+          className={route === "home" ? "active" : null}
+          onClick={() => setRoute("home")}
         >
-          Start Fundraising
+          Home
         </button>
         <button
           className={route === "fundraisers" ? "active" : null}
