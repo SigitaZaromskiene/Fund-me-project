@@ -1,6 +1,6 @@
 function Filter() {
   return (
-    <div>
+    <div className="filter">
       <div>
         <label>Filter by</label>
         <select>
