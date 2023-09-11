@@ -24,6 +24,10 @@
       border-radius: 15px;
       cursor: pointer;
     }
+
+    @include media(medium) {
+      display: none;
+    }
   }
 
   .active {
@@ -33,5 +37,15 @@
       background-color: $mainBlue;
       color: white;
     }
+  }
+}
+
+.icon {
+  display: none;
+
+  @include media(medium) {
+    display: inline-block;
+    height: 32px;
+    cursor: pointer;
   }
 }

@@ -1,5 +1,9 @@
 import { useContext } from "react";
 import { Global } from "../Contexts/Global";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 function Nav() {
   const { setRoute, route } = useContext(Global);
   return (
@@ -36,6 +40,7 @@ function Nav() {
           Sign in
         </button>
       </div>
+      <FontAwesomeIcon icon={faBars} className="icon" />
     </nav>
   );
 }

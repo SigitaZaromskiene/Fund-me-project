@@ -1,8 +1,53 @@
 .hero-section {
-  height: 500px;
+  height: 100%;
+  position: relative;
   &__img {
     background-image: url("../img/people.jpg");
     height: 100%;
     background-size: cover;
+    background-position: center;
+  }
+  &__text {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    border: 3px solid $mainBlue;
+    transform: translate(50%, -50%);
+    padding: 30px 40px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.711);
+    color: black;
+    @include flex(center, center, column, 30px);
+
+    @include media(medium) {
+      width: 450px;
+    }
+
+    @include media(smallest) {
+      height: 400px;
+      width: 300px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+
+  button {
+    border: 2px solid $mainBlue;
+    padding: 5px 15px;
+    color: $mainFontColor;
+    font-size: 1.5rem;
+    background-color: $mainBlue;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: $mainBlue;
+    }
   }
 }

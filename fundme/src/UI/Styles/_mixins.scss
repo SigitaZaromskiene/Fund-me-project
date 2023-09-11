@@ -1,6 +1,27 @@
 @mixin flex($justify, $align, $direction, $gap) {
+  display: flex;
   justify-content: $justify;
   align-items: $align;
   flex-direction: $direction;
   gap: $gap;
+}
+
+@mixin media($point) {
+  @if $point == smallest {
+    @media (max-width: 500px) {
+      @content;
+    }
+  } @else if $point == small {
+    @media (max-width: 700px) {
+      @content;
+    }
+  } @else if $point == medium {
+    @media (max-width: 850px) {
+      @content;
+    }
+  } @else if $point == large {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
 }
