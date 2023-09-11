@@ -1,3 +1,20 @@
 .filter {
   @include flex(center, center, row, 50px);
+  margin-bottom: 50px;
+
+  &__right,
+  &__left {
+    @include flex(center, center, row, 30px);
+    margin-bottom: 120px;
+
+    label {
+      font-size: 1.2rem;
+    }
+
+    select {
+      font-size: 1rem;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  }
 }

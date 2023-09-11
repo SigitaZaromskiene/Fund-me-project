@@ -3,7 +3,8 @@
   position: relative;
   &__img {
     background-image: url("../img/people.jpg");
-    height: 100%;
+    height: 100vh;
+
     background-size: cover;
     background-position: center;
   }

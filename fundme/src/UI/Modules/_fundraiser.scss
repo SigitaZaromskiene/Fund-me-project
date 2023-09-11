@@ -10,4 +10,93 @@
       margin-bottom: 40px;
     }
   }
+  &__lists {
+    @include flex(center, center, column, 20px);
+    padding: 0px;
+
+    &--list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 2fr 0.8fr 1fr 0.8fr;
+      column-gap: 40px;
+      border: 2px solid $mainBlue;
+      padding: 15px 20px;
+      border-radius: 15px;
+
+      @include media(large) {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 40px;
+      }
+
+      &--right {
+        ul {
+          margin-bottom: 10px;
+          color: $mainBlue;
+          text-align: center;
+          padding: 0px;
+        }
+
+        li {
+          @include flex(center, center, row, 45px);
+        }
+      }
+
+      &--left {
+        @include flex(center, center, column, 15px);
+
+        li {
+          @include flex(center, center, row, 15px);
+        }
+        &--name {
+          @include flex(center, center, row, 20px);
+          margin-bottom: 10px;
+          font-size: 1.4rem;
+        }
+      }
+
+      &--middle {
+        @include flex(flex-start, center, column, 15px);
+
+        &--goal {
+          font-weight: 600;
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+          color: crimson;
+
+          &--border {
+            border: 1px solid $mainBlue;
+            padding: 2px;
+            border-radius: 15px;
+            margin-top: 5px;
+          }
+        }
+        &--donations {
+          @include flex(space-between, center, column, 15px);
+
+          &--header {
+            @include flex(center, center, row, 15px);
+          }
+
+          &--button {
+            background-color: crimson;
+            padding: 5px 10px;
+            border-radius: 15px;
+            border: 1px solid transparent;
+            color: white;
+
+            &:hover {
+              border: 1px solid crimson;
+              background-color: white;
+              color: crimson;
+            }
+          }
+
+          &--name {
+            @include flex(space-between, center, row, 15px);
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }
