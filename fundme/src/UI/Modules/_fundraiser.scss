@@ -1,0 +1,141 @@
+.fundraiser {
+  &__header {
+    @include media(small) {
+      font-size: 1.5rem;
+    }
+
+    @include media(smallest) {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    font-size: 2rem;
+    margin-bottom: 10px;
+
+    &--border {
+      border: 1px solid $mainFontColor;
+      margin-top: 6px;
+      width: 70%;
+      margin-bottom: 40px;
+    }
+  }
+  &__lists {
+    @include flex(center, center, column, 20px);
+    padding: 0px;
+
+    &--list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 2fr 0.8fr 1fr 0.8fr;
+      column-gap: 40px;
+      border: 2px solid $mainBlue;
+      padding: 15px 20px;
+      border-radius: 15px;
+      width: 100%;
+
+      @include media(medium2) {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 40px;
+      }
+
+      @include media(small) {
+        grid-template-columns: 1fr;
+        padding: 0px;
+      }
+
+      &--right {
+        div {
+          @include flex(center, center, row, 45px);
+        }
+        @include media(small) {
+          padding: 10px;
+          margin-bottom: 50px;
+        }
+        ul {
+          margin-bottom: 20px;
+          color: $mainBlue;
+          text-align: center;
+          padding: 0px;
+
+          span {
+            margin-left: 10px;
+          }
+        }
+
+        li {
+          @include flex(center, center, row, 45px);
+        }
+      }
+
+      &--left {
+        @include media(small) {
+          width: 100%;
+          padding: 10px;
+          text-align: center;
+
+          div {
+            margin-bottom: 10px;
+          }
+        }
+        @include flex(center, center, column, 25px);
+
+        li {
+          @include flex(center, center, row, 15px);
+        }
+        &--name {
+          @include flex(center, center, row, 20px);
+          margin-bottom: 10px;
+          font-size: 1.4rem;
+        }
+      }
+
+      &--middle {
+        @include media(small) {
+          border-top: 2px solid $mainBlue;
+          width: 100%;
+          padding: 10px;
+          div {
+            margin-bottom: 10px;
+          }
+        }
+        @include flex(center, center, column, 15px);
+
+        &--goal {
+          font-weight: 600;
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+          color: crimson;
+
+          &--border {
+            border: 1px solid $mainBlue;
+            padding: 2px;
+            border-radius: 15px;
+            margin-top: 5px;
+            width: 160px;
+          }
+        }
+        &--donations {
+          @include media(small) {
+            border-bottom: 2px solid $mainBlue;
+            width: 100%;
+          }
+          @include flex(center, center, column, 15px);
+          width: 100%;
+
+          &--header {
+            text-align: center;
+            @include flex(center, center, row, 10px);
+            margin-bottom: 10px;
+          }
+
+          &--name {
+            @include flex(center, center, column, 10px);
+            div {
+              @include flex(center, center, column, 10px);
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

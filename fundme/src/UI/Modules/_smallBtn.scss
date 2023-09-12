@@ -1,0 +1,16 @@
+.small-button {
+  @include media(small) {
+    margin-bottom: 10px;
+  }
+  background-color: crimson;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  color: white;
+
+  &:hover {
+    border: 1px solid crimson;
+    background-color: white;
+    color: crimson;
+  }
+}

@@ -1,4 +1,9 @@
 @import "./Styles/variables";
 @import "./Styles/mixins";
 @import "./Styles/base";
+@import "~bootstrap/scss/bootstrap";
 @import "./Modules/nav";
+@import "./Modules/smallBtn";
+@import "./Modules/hero";
+@import "./Modules/fundraiser";
+@import "./Modules/filter";

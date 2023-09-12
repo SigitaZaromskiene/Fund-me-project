@@ -1,0 +1,33 @@
+.filter {
+  @include media(small) {
+    @include flex(space-between, center, column, 10px);
+  }
+  @include flex(center, center, row, 50px);
+  margin-bottom: 30px;
+
+  &__right,
+  &__left {
+    width: 300px;
+    @include media(small) {
+      margin-bottom: 20px;
+      @include flex(space-between, center, row, 50px);
+      margin-bottom: 30px;
+    }
+    @include flex(center, center, row, 30px);
+    margin-bottom: 50px;
+
+    label {
+      font-size: 1.2rem;
+    }
+
+    select {
+      @include media(small) {
+        width: 160px;
+      }
+      font-size: 1rem;
+      padding: 5px 10px;
+      cursor: pointer;
+      width: 200px;
+    }
+  }
+}

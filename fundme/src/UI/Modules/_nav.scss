@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-top: 30px;
+  padding: 20px;
   &__logo {
     font-size: 1.8rem;
     &--border {
@@ -16,7 +16,7 @@
     display: flex;
     gap: 25px;
     button {
-      border: 2px solid $mainGreen;
+      border: 2px solid $mainBlue;
       padding: 5px 15px;
       color: $mainFontColor;
       font-size: 1.5rem;
@@ -24,10 +24,28 @@
       border-radius: 15px;
       cursor: pointer;
     }
+
+    @include media(medium) {
+      display: none;
+    }
   }
 
-  .active:hover {
-    background-color: $mainGreen;
+  .active {
+    background-color: $mainBlue;
     color: white;
+    &:hover {
+      background-color: $mainBlue;
+      color: white;
+    }
+  }
+}
+
+.icon {
+  display: none;
+
+  @include media(medium) {
+    display: inline-block;
+    height: 32px;
+    cursor: pointer;
   }
 }
