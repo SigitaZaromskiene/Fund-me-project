@@ -32,7 +32,6 @@ function Fundraisers() {
           <div className="fundraiser__lists--list--middle--donations">
             <div className="fundraiser__lists--list--middle--donations--header">
               <p>Thank you for your donations</p>
-              <FontAwesomeIcon icon={faHeart} />
             </div>
 
             <div className="fundraiser__lists--list--middle--donations--name">
@@ -48,7 +47,13 @@ function Fundraisers() {
             </button>
           </div>
           <div className="fundraiser__lists--list--right">
-            <ul>Last donations</ul>
+            <ul>
+              Last donations{" "}
+              <span>
+                {" "}
+                <FontAwesomeIcon icon={faHeart} />
+              </span>
+            </ul>
             <li>
               <p>Rima</p>
               <p>50 &euro;</p>

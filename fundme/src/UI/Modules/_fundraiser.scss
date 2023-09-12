@@ -1,12 +1,19 @@
 .fundraiser {
   &__header {
+    @include media(small) {
+      font-size: 1.5rem;
+    }
+
+    @include media(smallest) {
+      font-size: 1.2rem;
+    }
     font-size: 2rem;
     margin-bottom: 10px;
 
     &--border {
       border: 1px solid $mainFontColor;
       margin-top: 6px;
-      width: 700px;
+      width: 70%;
       margin-bottom: 40px;
     }
   }
@@ -28,9 +35,13 @@
         row-gap: 40px;
       }
 
+      @include media(small) {
+        grid-template-columns: 1fr;
+      }
+
       &--right {
         ul {
-          margin-bottom: 10px;
+          margin-bottom: 20px;
           color: $mainBlue;
           text-align: center;
           padding: 0px;
@@ -42,7 +53,15 @@
       }
 
       &--left {
-        @include flex(center, center, column, 15px);
+        @include media(small) {
+          border-bottom: 2px solid $mainBlue;
+          width: 100%;
+
+          div {
+            margin-bottom: 10px;
+          }
+        }
+        @include flex(flex-start, center, column, 15px);
 
         li {
           @include flex(center, center, row, 15px);
@@ -55,6 +74,13 @@
       }
 
       &--middle {
+        @include media(small) {
+          border-bottom: 2px solid $mainBlue;
+          width: 100%;
+          div {
+            margin-bottom: 10px;
+          }
+        }
         @include flex(flex-start, center, column, 15px);
 
         &--goal {
@@ -68,16 +94,25 @@
             padding: 2px;
             border-radius: 15px;
             margin-top: 5px;
+            width: 160px;
           }
         }
         &--donations {
-          @include flex(space-between, center, column, 15px);
+          @include media(small) {
+            border-bottom: 2px solid $mainBlue;
+            width: 100%;
+          }
+          @include flex(center, center, column, 15px);
 
           &--header {
-            @include flex(center, center, row, 15px);
+            @include flex(center, center, row, 10px);
+            margin-bottom: 10px;
           }
 
           &--button {
+            @include media(small) {
+              margin-bottom: 10px;
+            }
             background-color: crimson;
             padding: 5px 10px;
             border-radius: 15px;
@@ -92,7 +127,7 @@
           }
 
           &--name {
-            @include flex(space-between, center, row, 15px);
+            @include flex(space-between, center, row, 10px);
             width: 100%;
           }
         }
