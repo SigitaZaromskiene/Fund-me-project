@@ -30,6 +30,7 @@
       border: 2px solid $mainBlue;
       padding: 15px 20px;
       border-radius: 15px;
+      width: 100%;
 
       @include media(medium2) {
         grid-template-columns: 1fr 1fr;
@@ -42,6 +43,9 @@
       }
 
       &--right {
+        div {
+          @include flex(center, center, row, 45px);
+        }
         @include media(small) {
           padding: 10px;
           margin-bottom: 50px;
@@ -72,7 +76,7 @@
             margin-bottom: 10px;
           }
         }
-        @include flex(center, center, column, 15px);
+        @include flex(center, center, column, 25px);
 
         li {
           @include flex(center, center, row, 15px);
@@ -121,23 +125,6 @@
             text-align: center;
             @include flex(center, center, row, 10px);
             margin-bottom: 10px;
-          }
-
-          &--button {
-            @include media(small) {
-              margin-bottom: 10px;
-            }
-            background-color: crimson;
-            padding: 5px 10px;
-            border-radius: 15px;
-            border: 1px solid transparent;
-            color: white;
-
-            &:hover {
-              border: 1px solid crimson;
-              background-color: white;
-              color: crimson;
-            }
           }
 
           &--name {
