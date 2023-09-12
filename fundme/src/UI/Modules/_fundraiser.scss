@@ -6,6 +6,7 @@
 
     @include media(smallest) {
       font-size: 1.2rem;
+      text-align: center;
     }
     font-size: 2rem;
     margin-bottom: 10px;
@@ -30,21 +31,30 @@
       padding: 15px 20px;
       border-radius: 15px;
 
-      @include media(large) {
+      @include media(medium2) {
         grid-template-columns: 1fr 1fr;
         row-gap: 40px;
       }
 
       @include media(small) {
         grid-template-columns: 1fr;
+        padding: 0px;
       }
 
       &--right {
+        @include media(small) {
+          padding: 10px;
+          margin-bottom: 50px;
+        }
         ul {
           margin-bottom: 20px;
           color: $mainBlue;
           text-align: center;
           padding: 0px;
+
+          span {
+            margin-left: 10px;
+          }
         }
 
         li {
@@ -54,14 +64,15 @@
 
       &--left {
         @include media(small) {
-          border-bottom: 2px solid $mainBlue;
           width: 100%;
+          padding: 10px;
+          text-align: center;
 
           div {
             margin-bottom: 10px;
           }
         }
-        @include flex(flex-start, center, column, 15px);
+        @include flex(center, center, column, 15px);
 
         li {
           @include flex(center, center, row, 15px);
@@ -75,13 +86,14 @@
 
       &--middle {
         @include media(small) {
-          border-bottom: 2px solid $mainBlue;
+          border-top: 2px solid $mainBlue;
           width: 100%;
+          padding: 10px;
           div {
             margin-bottom: 10px;
           }
         }
-        @include flex(flex-start, center, column, 15px);
+        @include flex(center, center, column, 15px);
 
         &--goal {
           font-weight: 600;
@@ -103,8 +115,10 @@
             width: 100%;
           }
           @include flex(center, center, column, 15px);
+          width: 100%;
 
           &--header {
+            text-align: center;
             @include flex(center, center, row, 10px);
             margin-bottom: 10px;
           }
@@ -127,8 +141,11 @@
           }
 
           &--name {
-            @include flex(space-between, center, row, 10px);
-            width: 100%;
+            @include flex(center, center, column, 10px);
+            div {
+              @include flex(center, center, column, 10px);
+              width: 100%;
+            }
           }
         }
       }

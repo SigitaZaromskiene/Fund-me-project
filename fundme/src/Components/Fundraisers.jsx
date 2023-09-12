@@ -35,12 +35,14 @@ function Fundraisers() {
             </div>
 
             <div className="fundraiser__lists--list--middle--donations--name">
-              <label>Name</label>
-              <input></input>
-            </div>
-            <div className="fundraiser__lists--list--middle--donations--name">
-              <label>Sum</label>
-              <input></input>
+              <div>
+                <label>Name</label>
+                <input></input>
+              </div>
+              <div>
+                <label>Sum</label>
+                <input></input>
+              </div>
             </div>
             <button className="fundraiser__lists--list--middle--donations--button">
               Donate
