@@ -4,18 +4,15 @@ import { Global } from "../Contexts/Global";
 function DonatedGoal({ lis }) {
   const { createList } = useContext(Global);
 
-  console.log(createList);
-
   const list = createList.find((li) => li.id === lis.id);
 
   const [progressBar, setProgressBar] = useState(0);
 
-  useEffect(() => {
-    const percent = (list.donated / list.goal) * 100;
+  const percent = (list.donated / list.goal) * 100;
 
-    console.log(percent);
+  useEffect(() => {
     setProgressBar((prev) => Math.ceil(prev + percent));
-  }, []);
+  }, [percent]);
 
   return (
     <div className="fundraiser__lists--list--middle">
@@ -26,19 +23,20 @@ function DonatedGoal({ lis }) {
       <div className="fundraiser__lists--list--middle--goal--border">
         <div
           style={{
-            backgroundColor: "blue",
-            width: progressBar,
-            height: '4px'
+            backgroundColor: "#4a90e2",
+            width: progressBar + "%",
+            height: "100%",
           }}
-        > </div>
-          <div
-            style={{
-              paddingTop: "5px",
-            }}
-          >
-            {progressBar} %
-          </div>
-       
+        >
+          {" "}
+        </div>
+        <div
+          style={{
+            paddingTop: "5px",
+          }}
+        >
+          {progressBar} %
+        </div>
       </div>
     </div>
   );
