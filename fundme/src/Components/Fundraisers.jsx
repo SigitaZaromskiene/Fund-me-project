@@ -1,13 +1,13 @@
 import Filter from "./Filter";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
 import Loader from "./Loader";
 import { useContext } from "react";
 import { Global } from "../Contexts/Global";
 import SmallBtn from "./SmallBtn";
 import DonatedGoal from "./DonatedGoal";
 import AddListDonation from "./AddListDonation";
+import LastDoantions from "./LastDonations";
 
 function Fundraisers() {
   const { createList, loading } = useContext(Global);
@@ -32,19 +32,7 @@ function Fundraisers() {
               </div>
               <DonatedGoal lis={lis}></DonatedGoal>
               <AddListDonation lis={lis}></AddListDonation>
-              <div className="fundraiser__lists--list--right">
-                <ul>
-                  Last donations{" "}
-                  <span>
-                    {" "}
-                    <FontAwesomeIcon icon={faHeart} />
-                  </span>
-                </ul>
-                <div>
-                  <p>Rima</p>
-                  <p>50 &euro;</p>
-                </div>
-              </div>
+              <LastDoantions lis={lis}></LastDoantions>
             </div>
           ))
         ) : (

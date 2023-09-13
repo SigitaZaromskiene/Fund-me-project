@@ -43,6 +43,9 @@
       }
 
       &--right {
+        @include flex(center, center, column, 15px);
+        width: 250px;
+
         div {
           @include flex(center, center, row, 45px);
         }

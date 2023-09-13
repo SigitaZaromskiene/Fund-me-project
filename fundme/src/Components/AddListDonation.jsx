@@ -1,11 +1,23 @@
 import SmallBtn from "./SmallBtn";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Global } from "../Contexts/Global";
 
 function AddListDonation({ lis }) {
   const [name, setName] = useState("");
   const [sum, setSum] = useState("");
 
-  console.log(name);
+  const { setDonation } = useContext(Global);
+
+  const donateHandler = () => {
+    setDonation({
+      donatorName: name,
+      donatorSum: sum,
+      id: lis.id,
+      donated: parseInt(lis.donated - sum),
+    });
+    setName("");
+    setSum("");
+  };
 
   return (
     <div className="fundraiser__lists--list--middle--donations">
@@ -17,7 +29,7 @@ function AddListDonation({ lis }) {
         <div>
           <label>Name</label>
           <input
-            value="name"
+            value={name}
             type="text"
             onChange={(e) => setName(e.target.value)}
           ></input>
@@ -25,7 +37,7 @@ function AddListDonation({ lis }) {
         <div>
           <label>Sum</label>
           <input
-            value="sum"
+            value={sum}
             type="number"
             min="0"
             max="5000"
@@ -34,7 +46,11 @@ function AddListDonation({ lis }) {
           ></input>
         </div>
       </div>
-      <SmallBtn className="small-button" text="Donate"></SmallBtn>
+      <SmallBtn
+        className="small-button"
+        text="Donate"
+        action={donateHandler}
+      ></SmallBtn>
     </div>
   );
 }
