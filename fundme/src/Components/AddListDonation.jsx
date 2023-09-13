@@ -13,7 +13,7 @@ function AddListDonation({ lis }) {
       donatorName: name,
       donatorSum: sum,
       id: lis.id,
-      donated: parseInt(lis.donated - sum),
+      donated: parseInt(Number(lis.donated) + Number(sum)),
     });
     setName("");
     setSum("");

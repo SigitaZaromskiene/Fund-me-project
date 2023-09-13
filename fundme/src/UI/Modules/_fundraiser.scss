@@ -110,31 +110,29 @@
 
           &--border {
             border: 1px solid $mainBlue;
-
             border-radius: 15px;
             margin-top: 5px;
             width: 200px;
 
             div {
-              animation-name: goalBar;
-              animation-duration: 2s;
-              background-color: white;
+              
               height: 4px;
               padding: 0px;
-
-              @keyframes goalBar {
-                0% {
-                  background-color: white;
-                  width: 0%;
-                  height: 2px;
-                }
-                100% {
-                  background-color: $mainBlue;
-                  width: 100%;
-                  height: 2px;
-                }
-              }
             }
+
+            //   @keyframes goalBar {
+            //     0% {
+            //       background-color: white;
+            //       width: 0%;
+            //       height: 2px;
+            //     }
+            //     100% {
+            //       background-color: $mainBlue;
+            //       width: 100%;
+            //       height: 2px;
+            //     }
+            //   }
+            // }
           }
         }
         &--donations {
