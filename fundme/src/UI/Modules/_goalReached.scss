@@ -1,0 +1,7 @@
+.goal-reached-container {
+  @include flex(center, center, column, 30px);
+  border: 1px solid crimson;
+  padding: 5px;
+  color: crimson;
+  text-align: center;
+}

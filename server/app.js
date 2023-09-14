@@ -58,6 +58,17 @@ app.put("/fundraisers/:id", (req, res) => {
   });
 });
 
+app.delete("/fundraisers/:id", (req, res) => {
+  const sql = `
+        DELETE FROM fundraisers
+        WHERE id = ?
+    `;
+  con.query(sql, [req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
 app.listen(port, () => {
   console.log(`LN is on port number: ${port}`);
 });

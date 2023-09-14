@@ -10,7 +10,7 @@ import AddListDonation from "./AddListDonation";
 import LastDoantions from "./LastDonations";
 
 function Fundraisers() {
-  const { createList, loading } = useContext(Global);
+  const { createList, loading, setDestroyFundraiser } = useContext(Global);
 
   return (
     <div className="fundraiser wrapper">
@@ -28,9 +28,15 @@ function Fundraisers() {
                   <p>{lis.surname}</p>
                 </div>
                 <div>{lis.story}</div>
-                <SmallBtn className="small-button" text="Delete"></SmallBtn>
+                <SmallBtn
+                  className="small-button"
+                  text="Delete"
+                  action={() => setDestroyFundraiser({ id: lis.id })}
+                ></SmallBtn>
               </div>
-              <DonatedGoal lis={lis}></DonatedGoal>
+
+              <DonatedGoal lis={lis} />
+
               <AddListDonation lis={lis}></AddListDonation>
               <LastDoantions lis={lis}></LastDoantions>
             </div>

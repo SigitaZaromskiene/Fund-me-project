@@ -5,6 +5,7 @@ const URL = "http://localhost:3007/fundraisers";
 
 export const useSetDonations = () => {
   const [donation, setDonation] = useState(null);
+  const [destroyFundraiser, setDestroyFundraiser] = useState(null);
   const [response, setResponse] = useState(null);
 
   useEffect(() => {
@@ -24,5 +25,19 @@ export const useSetDonations = () => {
       .then((res) => setResponse(res.data));
   }, [donation]);
 
-  return [response, setDonation];
+  useEffect(() => {
+    if (destroyFundraiser === null) {
+      return;
+    }
+
+    axios
+      .delete(
+        URL + "/" + destroyFundraiser.id,
+        { destroyFundraiser },
+        { withCredentials: true }
+      )
+      .then((res) => setResponse(res.data));
+  }, [destroyFundraiser]);
+
+  return [response, setDonation, setDestroyFundraiser];
 };

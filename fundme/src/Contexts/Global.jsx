@@ -6,17 +6,15 @@ export const Global = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [route, setRoute] = useState("fundraisers");
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const [createList, setUpdate, loading] = useGetFundraisersList();
-  const [response, setDonation] = useSetDonations();
-
-  
+  const [response, setDonation, setDestroyFundraiser] = useSetDonations();
 
   useEffect(() => {
     setUpdate(Date.now());
   }, [setUpdate, response]);
 
- 
   return (
     <Global.Provider
       value={{
@@ -26,6 +24,9 @@ export const GlobalProvider = ({ children }) => {
         createList,
         response,
         setDonation,
+        setDestroyFundraiser,
+        errorMsg,
+        setErrorMsg,
       }}
     >
       {children}
