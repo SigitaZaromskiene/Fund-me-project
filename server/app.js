@@ -34,13 +34,44 @@ app.use(express.json());
 
 app.get("/fundraisers", (req, res) => {
   const sql = `
-  SELECT id, name, surname, story, goal
+  SELECT id, name, surname, story, goal, donatorName, donatorSum, donated, prc
   FROM fundraisers
 
   `;
   con.query(sql, (err, result) => {
     if (err) throw err;
     res.json(result);
+  });
+});
+
+app.put("/fundraisers/:id", (req, res) => {
+  const sql = `
+        UPDATE fundraisers
+        SET donatorName = ?, donatorSum = ?, donated = ?, prc =?
+        WHERE id = ?
+    `;
+  params = [
+    req.body.name,
+    req.body.sum,
+    req.body.donated,
+    req.body.prc,
+    req.params.id,
+  ];
+
+  con.query(sql, params, (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
+app.delete("/fundraisers/:id", (req, res) => {
+  const sql = `
+        DELETE FROM fundraisers
+        WHERE id = ?
+    `;
+  con.query(sql, [req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
   });
 });
 

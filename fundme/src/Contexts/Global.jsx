@@ -1,16 +1,22 @@
 import { createContext, useState, useEffect } from "react";
 import { useGetFundraisersList } from "../Use/useGetFundraisersList";
+import { useSetDonations } from "../Use/useSetDonations";
 
 export const Global = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [route, setRoute] = useState("fundraisers");
 
-  const [createList, setUpdate, loading] = useGetFundraisersList();
+  const [createList, setUpdate, loading, message, setErrorMessage] =
+    useGetFundraisersList();
+  const [response, setDonation, setDestroyFundraiser, setErrMsg, errMsg] =
+    useSetDonations();
+
+  const [errMessage, setErrMessage] = useState(null);
 
   useEffect(() => {
     setUpdate(Date.now());
-  }, [setUpdate]);
+  }, [setUpdate, response]);
 
   return (
     <Global.Provider
@@ -19,6 +25,15 @@ export const GlobalProvider = ({ children }) => {
         setRoute,
         loading,
         createList,
+        response,
+        setDonation,
+        setDestroyFundraiser,
+        message,
+        setErrorMessage,
+        setErrMsg,
+        errMsg,
+        errMessage,
+        setErrMessage,
       }}
     >
       {children}

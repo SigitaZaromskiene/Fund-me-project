@@ -19,6 +19,10 @@
     color: black;
     @include flex(center, center, column, 30px);
 
+    &:hover {
+      transform: scale(1.2);
+    }
+
     @include media(medium) {
       width: 450px;
     }

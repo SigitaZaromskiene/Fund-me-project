@@ -1,23 +1,69 @@
 import SmallBtn from "./SmallBtn";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Global } from "../Contexts/Global";
+import SmallErrorMsg from "./SmallErrorMsg";
 
 function AddListDonation({ lis }) {
   const [name, setName] = useState("");
   const [sum, setSum] = useState("");
 
-  console.log(name);
+  const { setDonation, setErrMessage, errMessage } = useContext(Global);
+
+  const percent = (lis.donated / lis.goal) * 100;
+
+  const nameValidation = () => {
+    if (name.length === 0) {
+      setErrMessage("Please enter your name");
+    } else if (name.trim().length < 3) {
+      setErrMessage("Name is too short");
+    } else if (/\d/.test(name)) {
+      setErrMessage("Name cannot contain numbers");
+    }
+    return;
+  };
+
+  const sumValidation = () => {
+    if (sum.length === 0) {
+      setErrMessage("Please enter sum");
+    } else if (!isFinite(sum) || sum.includes(".") || sum.includes(",")) {
+      setErrMessage("Please enter valid number");
+    }
+    return;
+  };
+
+  const donateHandler = () => {
+    if (!nameValidation() && !sumValidation()) {
+      setName("");
+      setSum("");
+      return;
+    }
+
+    setDonation({
+      donatorName: name,
+      donatorSum: sum,
+      id: lis.id,
+      prc: parseInt(Number(lis.prc) + percent),
+      donated: parseInt(Number(lis.donated) + Number(sum)),
+    });
+    setName("");
+    setSum("");
+  };
 
   return (
     <div className="fundraiser__lists--list--middle--donations">
       <div className="fundraiser__lists--list--middle--donations--header">
-        <p>Thank you for your donations</p>
+        {errMessage ? (
+          <SmallErrorMsg message={errMessage}></SmallErrorMsg>
+        ) : (
+          <p>Thank you for your donations</p>
+        )}
       </div>
 
       <div className="fundraiser__lists--list--middle--donations--name">
         <div>
           <label>Name</label>
           <input
-            value="name"
+            value={name}
             type="text"
             onChange={(e) => setName(e.target.value)}
           ></input>
@@ -25,7 +71,7 @@ function AddListDonation({ lis }) {
         <div>
           <label>Sum</label>
           <input
-            value="sum"
+            value={sum}
             type="number"
             min="0"
             max="5000"
@@ -34,7 +80,11 @@ function AddListDonation({ lis }) {
           ></input>
         </div>
       </div>
-      <SmallBtn className="small-button" text="Donate"></SmallBtn>
+      <SmallBtn
+        className="small-button"
+        text="Donate"
+        action={donateHandler}
+      ></SmallBtn>
     </div>
   );
 }
