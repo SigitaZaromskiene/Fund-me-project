@@ -20,6 +20,7 @@ function Fundraisers() {
       <p className="fundraiser__header">Personal Campaigns Getting Funded</p>
       <div className="fundraiser__header--border"></div>
       <Filter></Filter>
+
       <ul className="fundraiser__lists">
         {loading && <Loader />}
         {createList.length === 0 && !loading ? (

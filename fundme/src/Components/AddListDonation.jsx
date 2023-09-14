@@ -1,16 +1,43 @@
 import SmallBtn from "./SmallBtn";
 import { useContext, useState } from "react";
 import { Global } from "../Contexts/Global";
+import SmallErrorMsg from "./SmallErrorMsg";
 
 function AddListDonation({ lis }) {
   const [name, setName] = useState("");
   const [sum, setSum] = useState("");
 
-  const { setDonation } = useContext(Global);
+  const { setDonation, setErrMessage, errMessage } = useContext(Global);
 
   const percent = (lis.donated / lis.goal) * 100;
 
+  const nameValidation = () => {
+    if (name.length === 0) {
+      setErrMessage("Please enter your name");
+    } else if (name.trim().length < 3) {
+      setErrMessage("Name is too short");
+    } else if (/\d/.test(name)) {
+      setErrMessage("Name cannot contain numbers");
+    }
+    return;
+  };
+
+  const sumValidation = () => {
+    if (sum.length === 0) {
+      setErrMessage("Please enter sum");
+    } else if (!isFinite(sum) || sum.includes(".") || sum.includes(",")) {
+      setErrMessage("Please enter valid number");
+    }
+    return;
+  };
+
   const donateHandler = () => {
+    if (!nameValidation() && !sumValidation()) {
+      setName("");
+      setSum("");
+      return;
+    }
+
     setDonation({
       donatorName: name,
       donatorSum: sum,
@@ -25,7 +52,11 @@ function AddListDonation({ lis }) {
   return (
     <div className="fundraiser__lists--list--middle--donations">
       <div className="fundraiser__lists--list--middle--donations--header">
-        <p>Thank you for your donations</p>
+        {errMessage ? (
+          <SmallErrorMsg message={errMessage}></SmallErrorMsg>
+        ) : (
+          <p>Thank you for your donations</p>
+        )}
       </div>
 
       <div className="fundraiser__lists--list--middle--donations--name">

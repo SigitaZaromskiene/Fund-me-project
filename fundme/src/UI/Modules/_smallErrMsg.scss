@@ -1,0 +1,12 @@
+.small-error-msg-container {
+  width: 100%;
+  color: crimson;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  @include flex(center, center, row, 0px);
+
+  p {
+    margin: 0px;
+  }
+}

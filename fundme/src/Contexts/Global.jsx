@@ -12,6 +12,8 @@ export const GlobalProvider = ({ children }) => {
   const [response, setDonation, setDestroyFundraiser, setErrMsg, errMsg] =
     useSetDonations();
 
+  const [errMessage, setErrMessage] = useState(null);
+
   useEffect(() => {
     setUpdate(Date.now());
   }, [setUpdate, response]);
@@ -30,6 +32,8 @@ export const GlobalProvider = ({ children }) => {
         setErrorMessage,
         setErrMsg,
         errMsg,
+        errMessage,
+        setErrMessage,
       }}
     >
       {children}
