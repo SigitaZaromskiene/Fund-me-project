@@ -8,11 +8,14 @@ function AddListDonation({ lis }) {
 
   const { setDonation } = useContext(Global);
 
+  const percent = (lis.donated / lis.goal) * 100;
+
   const donateHandler = () => {
     setDonation({
       donatorName: name,
       donatorSum: sum,
       id: lis.id,
+      prc: parseInt(Number(lis.prc) + percent),
       donated: parseInt(Number(lis.donated) + Number(sum)),
     });
     setName("");

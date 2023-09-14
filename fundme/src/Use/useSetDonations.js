@@ -7,6 +7,7 @@ export const useSetDonations = () => {
   const [donation, setDonation] = useState(null);
   const [destroyFundraiser, setDestroyFundraiser] = useState(null);
   const [response, setResponse] = useState(null);
+  const [errMsg, setErrMsg] = useState(null);
 
   useEffect(() => {
     if (donation === null) {
@@ -19,10 +20,12 @@ export const useSetDonations = () => {
           name: donation.donatorName,
           sum: donation.donatorSum,
           donated: donation.donated,
+          prc: donation.prc,
         },
         { withCredentials: true }
       )
-      .then((res) => setResponse(res.data));
+      .then((res) => setResponse(res.data))
+      .catch((err) => setErrMsg("Connection error, cannot donate"));
   }, [donation]);
 
   useEffect(() => {
@@ -39,5 +42,5 @@ export const useSetDonations = () => {
       .then((res) => setResponse(res.data));
   }, [destroyFundraiser]);
 
-  return [response, setDonation, setDestroyFundraiser];
+  return [response, setDonation, setDestroyFundraiser, setErrMsg, errMsg];
 };

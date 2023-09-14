@@ -1,23 +1,9 @@
-import { useState, useContext, useEffect } from "react";
-import { Global } from "../Contexts/Global";
 import GoalReached from "./GoalReached";
 
 function DonatedGoal({ lis }) {
-  const { createList } = useContext(Global);
-
-  const [progressBar, setProgressBar] = useState(0);
-
-  const list = createList.find((li) => li.id === lis.id);
-
-  const percent = (list.donated / list.goal) * 100;
-
-  useEffect(() => {
-    setProgressBar((prev) => Math.ceil(prev + percent));
-  }, []);
-
   return (
     <div className="fundraiser__lists--list--middle">
-      {progressBar >= 100 ? (
+      {lis.prc >= 100 ? (
         <GoalReached />
       ) : (
         <>
@@ -29,7 +15,7 @@ function DonatedGoal({ lis }) {
             <div
               style={{
                 backgroundColor: "#4a90e2",
-                width: progressBar + "%",
+                width: lis.prc + "%",
                 height: "100%",
               }}
             >
@@ -40,7 +26,7 @@ function DonatedGoal({ lis }) {
                 paddingTop: "5px",
               }}
             >
-              {progressBar} %
+              {lis.prc} %
             </div>
           </div>{" "}
         </>

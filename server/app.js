@@ -34,7 +34,7 @@ app.use(express.json());
 
 app.get("/fundraisers", (req, res) => {
   const sql = `
-  SELECT id, name, surname, story, goal, donatorName, donatorSum, donated
+  SELECT id, name, surname, story, goal, donatorName, donatorSum, donated, prc
   FROM fundraisers
 
   `;
@@ -47,10 +47,16 @@ app.get("/fundraisers", (req, res) => {
 app.put("/fundraisers/:id", (req, res) => {
   const sql = `
         UPDATE fundraisers
-        SET donatorName = ?, donatorSum = ?, donated = ?
+        SET donatorName = ?, donatorSum = ?, donated = ?, prc =?
         WHERE id = ?
     `;
-  params = [req.body.name, req.body.sum, req.body.donated, req.params.id];
+  params = [
+    req.body.name,
+    req.body.sum,
+    req.body.donated,
+    req.body.prc,
+    req.params.id,
+  ];
 
   con.query(sql, params, (err) => {
     if (err) throw err;
