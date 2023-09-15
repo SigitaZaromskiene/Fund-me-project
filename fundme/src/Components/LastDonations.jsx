@@ -20,7 +20,7 @@ function LastDonations({ lis }) {
 
       <div>
         <p>{list.donatorName}</p>
-        <p>{list.donatorSum.toFixed(2, 0)} &euro;</p>
+        <p>{list.donatorSum} &euro;</p>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ const URL = "http://localhost:3007/fundraisers";
 
 export const useGetFundraisersList = () => {
   const [loading, setLoading] = useState(false);
-  const [createList, setCreateList] = useState([]);
+  const [createList, setCreateList] = useState(null);
   const [update, setUpdate] = useState(null);
   const [message, setErrorMessage] = useState(null);
 
@@ -23,5 +23,13 @@ export const useGetFundraisersList = () => {
       .catch((err) => setErrorMessage("Connection error, cannot upload"));
   }, [update]);
 
-  return [createList, setUpdate, loading, message, setErrorMessage];
+  return [
+    createList,
+    setUpdate,
+    loading,
+    message,
+    setErrorMessage,
+    setCreateList,
+    update,
+  ];
 };

@@ -4,6 +4,7 @@
   }
   @include flex(center, center, row, 50px);
   margin-bottom: 30px;
+  cursor: pointer;
 
   &__right,
   &__left {

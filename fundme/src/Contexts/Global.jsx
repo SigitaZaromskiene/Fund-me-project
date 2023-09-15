@@ -7,12 +7,20 @@ export const Global = createContext();
 export const GlobalProvider = ({ children }) => {
   const [route, setRoute] = useState("fundraisers");
 
-  const [createList, setUpdate, loading, message, setErrorMessage] =
-    useGetFundraisersList();
+  const [
+    createList,
+    setUpdate,
+    loading,
+    message,
+    setErrorMessage,
+    setCreateList,
+  ] = useGetFundraisersList();
   const [response, setDonation, setDestroyFundraiser, setErrMsg, errMsg] =
     useSetDonations();
 
   const [errMessage, setErrMessage] = useState(null);
+
+  const [filterValue, setFilterValue] = useState("");
 
   useEffect(() => {
     setUpdate(Date.now());
@@ -34,6 +42,9 @@ export const GlobalProvider = ({ children }) => {
         errMsg,
         errMessage,
         setErrMessage,
+        setCreateList,
+        setFilterValue,
+        filterValue,
       }}
     >
       {children}
