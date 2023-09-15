@@ -30,11 +30,12 @@ app.use(
     extended: true,
   })
 );
+
 app.use(express.json());
 
 app.get("/fundraisers", (req, res) => {
   const sql = `
-  SELECT id, name, surname, story, goal, donatorName, donatorSum, donated, prc
+  SELECT id, name, surname, story, goal, donatorName, donatorSum, donated, prc, isShow
   FROM fundraisers
 
   `;
