@@ -54,15 +54,24 @@ function Register() {
       <form className="login-form" onSubmit={registerHandler}>
         <div>
           <label>Name</label>
-          <input type="text" onChange={(e) => setName(e.target.value)}></input>
+          <input
+            value={name}
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+          ></input>
         </div>
         <div>
           <label>Password</label>
-          <input type="number" onChange={(e) => setPsw(e.target.value)}></input>
+          <input
+            value={psw}
+            type="number"
+            onChange={(e) => setPsw(e.target.value)}
+          ></input>
         </div>
         <div>
           <label>Repeat Password</label>
           <input
+            value={pswRepeat}
             type="number"
             onChange={(e) => setPswRepeat(e.target.value)}
           ></input>

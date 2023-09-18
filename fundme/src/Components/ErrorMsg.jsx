@@ -8,7 +8,7 @@ function ErrorMsg({ errorMsg }) {
     setTimeout(() => {
       setErrMsg(null);
     }, 5000);
-  }, []);
+  }, [setErrMsg]);
 
   return (
     <div className="error-message-container">
