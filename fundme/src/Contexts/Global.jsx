@@ -22,9 +22,20 @@ export const GlobalProvider = ({ children }) => {
 
   const [filterValue, setFilterValue] = useState("");
 
+  const [loginData, setLoginData] = useState(null);
+
   useEffect(() => {
     setUpdate(Date.now());
   }, [setUpdate, response]);
+
+  useEffect(() => {
+    if (errMessage === null) {
+      return;
+    }
+    setTimeout(() => {
+      setErrMessage(null);
+    }, 3000);
+  }, [errMessage]);
 
   return (
     <Global.Provider
@@ -45,6 +56,8 @@ export const GlobalProvider = ({ children }) => {
         setCreateList,
         setFilterValue,
         filterValue,
+        loginData,
+        setLoginData,
       }}
     >
       {children}

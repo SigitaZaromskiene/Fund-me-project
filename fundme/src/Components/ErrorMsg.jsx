@@ -2,12 +2,7 @@ import { useContext, useEffect } from "react";
 import { Global } from "../Contexts/Global";
 
 function ErrorMsg({ errorMsg }) {
-  const { setErrorMessage, setErrMsg } = useContext(Global);
-  useEffect(() => {
-    setTimeout(() => {
-      setErrorMessage(null);
-    }, 5000);
-  }, []);
+  const { setErrMsg } = useContext(Global);
 
   useEffect(() => {
     setTimeout(() => {

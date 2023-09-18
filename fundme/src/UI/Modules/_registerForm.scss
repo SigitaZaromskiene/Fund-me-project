@@ -1,0 +1,14 @@
+.register-form-container {
+  @include flex(center, center, column, 20px);
+
+  .register-form {
+    border: 2px solid $mainBlue;
+    border-radius: 15px;
+    padding: 25px 35px;
+    @include flex(center, center, column, 20px);
+
+    div {
+      @include flex(center, center, column, 20px);
+    }
+  }
+}

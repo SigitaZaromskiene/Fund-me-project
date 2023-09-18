@@ -76,6 +76,29 @@ app.delete("/fundraisers/:id", (req, res) => {
   });
 });
 
+app.post("/register", (req, res) => {
+  const session = uuidv4();
+  const sql = `
+  INSERT INTO users (session, name, psw)
+  VALUES (?, ?, ?)
+
+  `;
+  con.query(sql, [session, req.body.name, md5(req.body.psw)], (err, result) => {
+    if (err) throw err;
+    if (result.affectedRows) {
+      res.cookie("usersSession", session);
+      res.json({
+        status: "ok",
+        name: req.body.name,
+      });
+    } else {
+      res.json({
+        status: "error",
+      });
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`LN is on port number: ${port}`);
 });
