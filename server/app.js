@@ -150,6 +150,13 @@ app.post("/login", (req, res) => {
   );
 });
 
+app.post("/logout", (req, res) => {
+  res.cookie("usersSession", "");
+  res.json({
+    status: "logout",
+  });
+});
+
 app.listen(port, () => {
   console.log(`LN is on port number: ${port}`);
 });

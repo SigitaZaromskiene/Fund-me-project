@@ -2,11 +2,10 @@ import SmallBtn from "../Components/SmallBtn";
 import { useState, useContext } from "react";
 import { Global } from "../Contexts/Global";
 import ErrorMsg from "./ErrorMsg";
-
-const URL = "http://localhost:3007/login";
+import axios from "axios";
 
 function Login() {
-  const { setErrMessage, setLoginData, setRoute, errMessage } =
+  const { setErrMessage, setLoggedName, setRoute, errMessage, setIsLogged } =
     useContext(Global);
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
@@ -18,29 +17,26 @@ function Login() {
       return;
     }
 
-    try {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, psw }),
+    axios
+      .post(
+        "http://localhost:3007/login",
+        { name, psw },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status === "ok") {
+          setName("");
+          setPsw("");
+          setRoute("numbers");
+          setIsLogged(true);
+          setLoggedName(res.data.name);
+        } else {
+          setErrMessage("Not correct details");
+          setName("");
+          setPsw("");
+        }
       });
-
-      if (!response.ok) {
-        throw new Error("Error 404");
-      }
-      const data = await response.json();
-      setLoginData(data);
-      setName("");
-      setPsw("");
-      setRoute("home");
-    } catch (error) {
-      setErrMessage(error.message);
-      setName("");
-      setPsw("");
-    }
   }
 
   return (

@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useGetFundraisersList } from "../Use/useGetFundraisersList";
 import { useSetDonations } from "../Use/useSetDonations";
+import axios from "axios";
 
 export const Global = createContext();
 
@@ -22,7 +23,27 @@ export const GlobalProvider = ({ children }) => {
 
   const [filterValue, setFilterValue] = useState("");
 
-  const [loginData, setLoginData] = useState(null);
+  const [loggedName, setLoggedName] = useState("");
+  const [isLogged, setIsLogged] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3007/login", { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status === "ok") {
+          setIsLogged(true);
+          setLoggedName(res.data.name);
+        } else {
+          setIsLogged(false);
+        }
+      })
+      .catch((err) => {
+        setErrMessage("404");
+      });
+  }, []);
+
+  console.log(isLogged);
 
   useEffect(() => {
     setUpdate(Date.now());
@@ -56,8 +77,10 @@ export const GlobalProvider = ({ children }) => {
         setCreateList,
         setFilterValue,
         filterValue,
-        loginData,
-        setLoginData,
+        loggedName,
+        setLoggedName,
+        isLogged,
+        setIsLogged,
       }}
     >
       {children}
