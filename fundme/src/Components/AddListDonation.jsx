@@ -7,40 +7,36 @@ function AddListDonation({ lis }) {
   const [name, setName] = useState("");
   const [sum, setSum] = useState("");
 
-  const { setDonation, setErrMessage, errMessage } = useContext(Global);
+  const {
+    setDonation,
+    setErrMessage,
+    errMessage,
+    createList,
+    response,
+    donation,
+  } = useContext(Global);
 
   const percent = (lis.donated / lis.goal) * 100;
 
-  const nameValidation = () => {
+  const donateHandler = () => {
     if (name.length === 0) {
       setErrMessage("Please enter your name");
+
+      return;
     } else if (name.trim().length < 3) {
       setErrMessage("Name is too short");
     } else if (/\d/.test(name)) {
       setErrMessage("Name cannot contain numbers");
     }
-    return;
-  };
-
-  const sumValidation = () => {
     if (sum.length === 0) {
       setErrMessage("Please enter sum");
     } else if (!isFinite(sum) || sum.includes(".") || sum.includes(",")) {
       setErrMessage("Please enter valid number");
     }
-    return;
-  };
-
-  const donateHandler = () => {
-    if (!nameValidation() && !sumValidation()) {
-      setName("");
-      setSum("");
-      return;
-    }
 
     setDonation({
       donatorName: name,
-      donatorSum: sum,
+      donatorSum: parseInt(sum),
       id: lis.id,
       prc: parseInt(Number(lis.prc) + percent),
       donated: parseInt(Number(lis.donated) + Number(sum)),

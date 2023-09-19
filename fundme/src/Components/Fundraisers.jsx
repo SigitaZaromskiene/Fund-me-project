@@ -22,8 +22,6 @@ function Fundraisers() {
 
   let filteredList = createList;
 
-  console.log(filteredList);
-
   if (filterValue === "1") {
     filteredList = createList.filter((li) => li);
   }

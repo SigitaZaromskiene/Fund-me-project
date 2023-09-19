@@ -39,8 +39,16 @@ export const useSetDonations = () => {
         { destroyFundraiser },
         { withCredentials: true }
       )
-      .then((res) => setResponse(res.data));
+      .then((res) => setResponse(res.data))
+      .catch((err) => setErrMsg("Connection error, cannot delete"));
   }, [destroyFundraiser]);
 
-  return [response, setDonation, setDestroyFundraiser, setErrMsg, errMsg];
+  return [
+    response,
+    setDonation,
+    setDestroyFundraiser,
+    setErrMsg,
+    errMsg,
+    donation,
+  ];
 };

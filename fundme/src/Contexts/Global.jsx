@@ -16,8 +16,14 @@ export const GlobalProvider = ({ children }) => {
     setErrorMessage,
     setCreateList,
   ] = useGetFundraisersList();
-  const [response, setDonation, setDestroyFundraiser, setErrMsg, errMsg] =
-    useSetDonations();
+  const [
+    response,
+    setDonation,
+    setDestroyFundraiser,
+    setErrMsg,
+    errMsg,
+    donation,
+  ] = useSetDonations();
 
   const [errMessage, setErrMessage] = useState(null);
 
@@ -92,6 +98,7 @@ export const GlobalProvider = ({ children }) => {
         setIsLogged,
         newStory,
         setNewStory,
+        donation,
       }}
     >
       {children}

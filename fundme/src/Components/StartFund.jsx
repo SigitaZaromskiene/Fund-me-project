@@ -7,7 +7,7 @@ import ErrorMsg from "../Components/ErrorMsg";
 const URL = "http://localhost:3007/story";
 
 function StartFund() {
-  const { errMessage, setErrMessage, setNewStory, newStory, setRoute } =
+  const { errMessage, setErrMessage, setNewStory, setRoute } =
     useContext(Global);
 
   const [name, setName] = useState("");
@@ -47,6 +47,8 @@ function StartFund() {
 
   return (
     <div className="start-fund-container wrapper">
+      <p className="fundraiser__header">Start fundraising compnay</p>
+      <div className="fundraiser__header--border"></div>
       <form className="start-fund-form">
         <div className="start-fund-form__upper">
           <div className="start-fund-form__upper--name">
