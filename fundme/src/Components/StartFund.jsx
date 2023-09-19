@@ -45,17 +45,16 @@ function StartFund() {
       .catch((err) => setErrMessage("404"));
   };
 
-  console.log(newStory);
-
   return (
     <div className="start-fund-container wrapper">
-      <form className="start-fund-form" onSubmit={publishHandler}>
+      <form className="start-fund-form">
         <div className="start-fund-form__upper">
           <div className="start-fund-form__upper--name">
             <label>Name</label>
             <input
               type="text"
               value={name}
+              pattern="[a-zA-Z]*"
               onChange={(e) => setName(e.target.value)}
             ></input>
           </div>
@@ -64,17 +63,18 @@ function StartFund() {
             <input
               type="text"
               value={surname}
+              pattern="[a-zA-Z]*"
               onChange={(e) => setSurname(e.target.value)}
             ></input>
           </div>
         </div>
         <div className="start-fund-form__story">
           <label>Story</label>
-          <input
+          <textarea
             type="text"
             value={story}
             onChange={(e) => setStory(e.target.value)}
-          ></input>
+          ></textarea>
         </div>
         <div className="start-fund-form__upper--goal">
           <label>Goal</label>
@@ -86,7 +86,7 @@ function StartFund() {
             onChange={(e) => setGoal(e.target.value)}
           ></input>
         </div>
-        <SmallBtn text="Publish" type="submit"></SmallBtn>
+        <SmallBtn text="Publish" action={publishHandler}></SmallBtn>
       </form>
       {errMessage ? <ErrorMsg errorMsg={errMessage}></ErrorMsg> : null}
     </div>

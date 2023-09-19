@@ -19,8 +19,9 @@
     color: black;
     @include flex(center, center, column, 30px);
 
-    @include media(medium) {
+    @include media(medium2) {
       width: 450px;
+      text-align: center;
     }
 
     @include media(smallest) {

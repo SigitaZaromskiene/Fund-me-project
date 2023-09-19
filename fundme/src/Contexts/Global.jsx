@@ -58,6 +58,15 @@ export const GlobalProvider = ({ children }) => {
     }, 3000);
   }, [errMessage]);
 
+  useEffect(() => {
+    if (newStory === null) {
+      return;
+    }
+    setTimeout(() => {
+      setNewStory(null);
+    }, 3000);
+  }, [newStory]);
+
   return (
     <Global.Provider
       value={{

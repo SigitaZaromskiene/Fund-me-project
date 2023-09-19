@@ -17,6 +17,7 @@ function Fundraisers() {
     message,
     errMsg,
     filterValue,
+    newStory,
   } = useContext(Global);
 
   let filteredList = createList;
@@ -73,6 +74,9 @@ function Fundraisers() {
             ))
           : null}
       </ul>
+      {newStory ? (
+        <ErrorMsg errorMsg="New story is published"></ErrorMsg>
+      ) : null}
     </div>
   );
 }

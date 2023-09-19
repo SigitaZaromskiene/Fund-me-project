@@ -32,7 +32,7 @@
       margin: 0px;
     }
 
-    @include media(medium) {
+    @include media(medium2) {
       display: none;
     }
   }
@@ -50,7 +50,7 @@
 .icon {
   display: none;
 
-  @include media(medium) {
+  @include media(medium2) {
     display: inline-block;
     height: 32px;
     cursor: pointer;
