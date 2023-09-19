@@ -150,6 +150,23 @@ app.post("/login", (req, res) => {
   );
 });
 
+app.post("/story", (req, res) => {
+  const sql = `
+  INSERT INTO fundraisers (name, surname, story, goal)
+  VALUES (?, ?, ?, ?)
+
+  `;
+
+  con.query(
+    sql,
+    [req.body.name, req.body.surname, req.body.story, req.body.goal],
+    (err) => {
+      if (err) throw err;
+      res.json({});
+    }
+  );
+});
+
 app.post("/logout", (req, res) => {
   res.cookie("usersSession", "");
   res.json({

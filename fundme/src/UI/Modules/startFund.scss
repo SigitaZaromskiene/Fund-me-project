@@ -1,0 +1,38 @@
+.start-fund-container {
+  @include flex(center, center, column, 20px);
+  //   @include flex(center, center, column, 20px);
+  .start-fund-form {
+    border: 2px solid $mainBlue;
+    border-radius: 15px;
+    height: 100%;
+    @include flex(center, center, column, 20px);
+    padding: 15px 25px;
+
+    &__upper {
+      @include flex(center, center, row, 50px);
+
+      &--name,
+      &--surname,
+      &--goal {
+        @include flex(center, center, column, 20px);
+
+        label {
+          text-align: center;
+          font-size: 24px;
+        }
+      }
+    }
+
+    &__story {
+      @include flex(center, column, column, 20px);
+      input {
+        width: 400px;
+        height: 300px;
+      }
+      label {
+        text-align: center;
+        font-size: 24px;
+      }
+    }
+  }
+}

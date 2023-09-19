@@ -26,6 +26,8 @@ export const GlobalProvider = ({ children }) => {
   const [loggedName, setLoggedName] = useState("");
   const [isLogged, setIsLogged] = useState(null);
 
+  const [newStory, setNewStory] = useState(null);
+
   useEffect(() => {
     axios
       .get("http://localhost:3007/login", { withCredentials: true })
@@ -43,11 +45,9 @@ export const GlobalProvider = ({ children }) => {
       });
   }, []);
 
-  console.log(isLogged);
-
   useEffect(() => {
     setUpdate(Date.now());
-  }, [setUpdate, response]);
+  }, [setUpdate, response, newStory]);
 
   useEffect(() => {
     if (errMessage === null) {
@@ -81,6 +81,8 @@ export const GlobalProvider = ({ children }) => {
         setLoggedName,
         isLogged,
         setIsLogged,
+        newStory,
+        setNewStory,
       }}
     >
       {children}
