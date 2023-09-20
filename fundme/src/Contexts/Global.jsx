@@ -34,6 +34,8 @@ export const GlobalProvider = ({ children }) => {
 
   const [newStory, setNewStory] = useState(null);
 
+  console.log(response);
+
   useEffect(() => {
     axios
       .get("http://localhost:3007/login", { withCredentials: true })
@@ -53,7 +55,7 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     setUpdate(Date.now());
-  }, [setUpdate, response, newStory]);
+  }, [setUpdate, response, newStory, donation]);
 
   useEffect(() => {
     if (errMessage === null) {
