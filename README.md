@@ -13,6 +13,7 @@ This project is for educational porpuses only.
 -   Login, register and logout features
 -   Simple forms validation
 -   Practising GIT and GITHUB (branches, pull, merge, push)
+-   Responsive design
 
 
 # Getting Started with Create React App
