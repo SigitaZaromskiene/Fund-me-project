@@ -4,7 +4,7 @@ import { Global } from "../Contexts/Global";
 function Filter() {
   const [sortValue, setSortValue] = useState("");
 
-  const { setCreateList, setFilterValue } = useContext(Global);
+  const { setCreateList, setFilterValue, filterValue } = useContext(Global);
 
   useEffect(() => {
     if (sortValue === "name") {
