@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { Global } from "../Contexts/Global";
 import ErrorMsg from "../Components/ErrorMsg";
 import { Link } from "react-router-dom";
+import link from "./link";
 
 const URL = "http://localhost:3007/register";
 
@@ -44,6 +45,7 @@ function Register() {
       setName("");
       setPsw("");
       setPswRepeat("");
+      link("login");
     } catch (error) {
       setErrMessage("Cannot register");
     }
