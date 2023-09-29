@@ -2,11 +2,10 @@ import SmallBtn from "../Components/SmallBtn";
 import { useState, useContext } from "react";
 import { Global } from "../Contexts/Global";
 import ErrorMsg from "../Components/ErrorMsg";
-
-const URL = "http://localhost:3007/register";
+import axios from "axios";
 
 function Register() {
-  const { setErrMessage, errMessage, setRoute, setLoginData } =
+  const { setErrMessage, errMessage, setRoute, setLoggedName } =
     useContext(Global);
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
@@ -29,25 +28,50 @@ function Register() {
       return;
     }
 
-    try {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, psw }),
-      });
+    //   try {
+    //     const response = await fetch(URL, {
+    //       method: "POST",
+    //       headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ name, psw }),
+    //     });
 
-      const data = await response.json();
-      setLoginData(data);
-      setName("");
-      setPsw("");
-      setPswRepeat("");
-      setRoute("login");
-    } catch (error) {
-      setErrMessage("Cannot register");
-    }
+    //     const data = await response.json();
+
+    //     if (data.status === "ok") {
+    //       setLoginData(data);
+    //       setName("");
+    //       setPsw("");
+    //       setPswRepeat("");
+    //       setRoute("login");
+    //     }
+    //   } catch (error) {
+    //     setErrMessage("Cannot register");
+    //   }
+    // }
+
+    axios
+      .post(
+        "http://localhost:3007/register",
+        { name, psw },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status === "ok") {
+          setLoggedName(res.data.name);
+          setName("");
+          setPsw("");
+          setPswRepeat("");
+          setRoute("login");
+        } else {
+          setErrMessage("Not correct details");
+          setName("");
+          setPsw("");
+        }
+      });
   }
   return (
     <div className="login-form-container wrapper">
