@@ -2,12 +2,12 @@ import SmallBtn from "../Components/SmallBtn";
 import { useState, useContext } from "react";
 import { Global } from "../Contexts/Global";
 import ErrorMsg from "../Components/ErrorMsg";
+import { Link } from "react-router-dom";
 
 const URL = "http://localhost:3007/register";
 
 function Register() {
-  const { setErrMessage, errMessage, setRoute, setLoginData } =
-    useContext(Global);
+  const { setErrMessage, errMessage, setLoginData } = useContext(Global);
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
   const [pswRepeat, setPswRepeat] = useState("");
@@ -44,7 +44,6 @@ function Register() {
       setName("");
       setPsw("");
       setPswRepeat("");
-      setRoute("login");
     } catch (error) {
       setErrMessage("Cannot register");
     }

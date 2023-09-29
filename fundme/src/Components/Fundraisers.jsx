@@ -37,8 +37,6 @@ function Fundraisers() {
     filteredList = createList.filter((li) => li.donated >= li.goal);
   }
 
-  console.log(filteredList, createList);
-
   return (
     <div className="fundraiser wrapper">
       {message && <ErrorMsg errorMsg={message}></ErrorMsg>}

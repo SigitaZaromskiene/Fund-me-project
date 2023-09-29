@@ -4,7 +4,7 @@ import SmallBtn from "../Components/SmallBtn";
 import axios from "axios";
 import ErrorMsg from "../Components/ErrorMsg";
 
-const URL = "http://localhost:3007/story";
+const URL = "http://localhost:3001/story";
 
 function StartFund() {
   const { errMessage, setErrMessage, setNewStory, setRoute } =

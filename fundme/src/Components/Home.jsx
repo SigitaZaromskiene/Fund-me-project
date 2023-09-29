@@ -1,18 +1,15 @@
-import { useContext } from "react";
-import { Global } from "../Contexts/Global";
+import { NavLink } from "react-router-dom";
 
 function Home() {
-  const { setRoute } = useContext(Global);
-
   return (
     <div className="hero-section">
       <div alt="Many people" className="hero-section__img"></div>
       <div className="hero-section__text">
         <h2>Powerful, Personal Fundraising </h2>
         <p>Fast, easy & trusted by millions - create your page for free!</p>
-        <button onClick={() => setRoute("fundraisers")}>
+        <NavLink to="login" className="nav-link-1">
           Start fundraising for free
-        </button>
+        </NavLink>
       </div>
     </div>
   );
