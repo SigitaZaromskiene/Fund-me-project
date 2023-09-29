@@ -38,7 +38,7 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/login", { withCredentials: true })
+      .get("http://localhost:3007/login", { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         if (res.data.status === "ok") {

@@ -44,9 +44,7 @@ function Fundraisers() {
       <p className="fundraiser__header">Personal Campaigns Getting Funded</p>
       <div className="fundraiser__header--border"></div>
       <Filter></Filter>
-      {filteredList.length === 0 && (
-        <p style={{ color: "crimson" }}>No fundraisers available</p>
-      )}
+
       <ul className="fundraiser__lists">
         {loading && <Loader />}
         {createList.length === 0 && !loading ? (

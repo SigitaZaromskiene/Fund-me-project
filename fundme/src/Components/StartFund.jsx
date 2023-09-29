@@ -3,17 +3,19 @@ import { Global } from "../Contexts/Global";
 import SmallBtn from "../Components/SmallBtn";
 import axios from "axios";
 import ErrorMsg from "../Components/ErrorMsg";
+import { useNavigate } from "react-router-dom";
 
-const URL = "http://localhost:3001/story";
+const URL = "http://localhost:3007/story";
 
 function StartFund() {
-  const { errMessage, setErrMessage, setNewStory, setRoute } =
-    useContext(Global);
+  const { errMessage, setErrMessage, setNewStory } = useContext(Global);
 
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [story, setStory] = useState("");
   const [goal, setGoal] = useState("");
+
+  const navigate = useNavigate();
 
   const publishHandler = (e) => {
     e.preventDefault();
@@ -36,11 +38,11 @@ function StartFund() {
       .post(URL, { name, surname, story, goal }, { withCredentials: true })
       .then((res) => {
         setNewStory(res.data);
-        setRoute("fundraisers");
         setName("");
         setSurname("");
         setGoal("");
         setStory("");
+        navigate("/fundraisers");
       })
       .catch((err) => setErrMessage("404"));
   };

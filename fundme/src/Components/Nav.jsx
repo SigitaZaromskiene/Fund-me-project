@@ -32,7 +32,7 @@ function Nav() {
         {loggedName ? (
           <>
             <p className="hello">Hello, {loggedName}</p>
-            <Logout />
+            <Logout></Logout>
           </>
         ) : (
           <>
