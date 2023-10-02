@@ -16,7 +16,7 @@
     display: flex;
     gap: 25px;
     @include flex(center, center, row, 30px);
-    button {
+    .nav-link {
       border: 2px solid $mainBlue;
       padding: 5px 15px;
       color: $mainFontColor;
@@ -55,4 +55,14 @@
     height: 32px;
     cursor: pointer;
   }
+}
+
+.nav-link-1 {
+  border: 2px solid $mainBlue;
+  padding: 5px 15px;
+  color: $mainFontColor;
+  font-size: 1.5rem;
+  background-color: white;
+  border-radius: 15px;
+  cursor: pointer;
 }

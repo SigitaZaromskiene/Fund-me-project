@@ -3,12 +3,15 @@ import { useState, useContext } from "react";
 import { Global } from "../Contexts/Global";
 import ErrorMsg from "./ErrorMsg";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { setErrMessage, setLoggedName, setRoute, errMessage, setIsLogged } =
+  const { setErrMessage, setLoggedName, errMessage, setIsLogged } =
     useContext(Global);
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
+
+  const navigate = useNavigate();
 
   async function loginHandler(e) {
     e.preventDefault();
@@ -28,7 +31,7 @@ function Login() {
         if (res.data.status === "ok") {
           setName("");
           setPsw("");
-          setRoute("numbers");
+          navigate("/home");
           setIsLogged(true);
           setLoggedName(res.data.name);
         } else {

@@ -37,7 +37,7 @@ function Fundraisers() {
     filteredList = createList.filter((li) => li.donated >= li.goal);
   }
 
-  console.log(filteredList, createList);
+  console.log(filteredList);
 
   return (
     <div className="fundraiser wrapper">
@@ -46,14 +46,16 @@ function Fundraisers() {
       <p className="fundraiser__header">Personal Campaigns Getting Funded</p>
       <div className="fundraiser__header--border"></div>
       <Filter></Filter>
-      {filteredList.length === 0 && (
-        <p style={{ color: "crimson" }}>No fundraisers available</p>
-      )}
+
       <ul className="fundraiser__lists">
         {loading && <Loader />}
         {createList.length === 0 && !loading ? (
           <p style={{ color: "crimson" }}>No fundraisers available</p>
         ) : null}
+        {filteredList.length === 0 && createList.length !== 0 ? (
+          <p style={{ color: "crimson" }}>No fundraisers available</p>
+        ) : null}
+
         {createList.length !== 0
           ? filteredList.map((lis) => (
               <div key={lis.id} className="fundraiser__lists--list">

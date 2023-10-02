@@ -40,8 +40,6 @@ function AddListDonation({ lis }) {
     setSum("");
   };
 
-  console.log(donation);
-
   return (
     <div className="fundraiser__lists--list--middle--donations">
       <div className="fundraiser__lists--list--middle--donations--header">

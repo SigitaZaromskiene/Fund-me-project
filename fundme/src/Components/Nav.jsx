@@ -4,9 +4,10 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Logout from "./Logout";
+import { NavLink } from "react-router-dom";
 
 function Nav() {
-  const { setRoute, route, loggedName } = useContext(Global);
+  const { loggedName } = useContext(Global);
 
   return (
     <nav className="nav">
@@ -15,47 +16,32 @@ function Nav() {
         <div className="nav__logo--border"></div>
       </div>
       <div className="nav__middle">
-        <button
-          className={route === "home" ? "active" : null}
-          onClick={() => setRoute("home")}
-        >
+        <NavLink to="home" className="nav-link">
           Home
-        </button>
-        <button
-          className={route === "fundraisers" ? "active" : null}
-          onClick={() => setRoute("fundraisers")}
-        >
+        </NavLink>
+        <NavLink to="fundraisers" className="nav-link">
           Fundraisers
-        </button>
+        </NavLink>
         {loggedName ? (
-          <button
-            className={route === "startFund" ? "active" : null}
-            onClick={() => setRoute("startFund")}
-          >
+          <NavLink to="start" className="nav-link">
             Start fundraising
-          </button>
+          </NavLink>
         ) : null}
       </div>
       <div className="nav__right">
         {loggedName ? (
           <>
             <p className="hello">Hello, {loggedName}</p>
-            <Logout />
+            <Logout></Logout>
           </>
         ) : (
           <>
-            <button
-              className={route === "login" ? "active" : null}
-              onClick={() => setRoute("login")}
-            >
+            <NavLink to="login" className="nav-link">
               Log in
-            </button>
-            <button
-              className={route === "register" ? "active" : null}
-              onClick={() => setRoute("register")}
-            >
+            </NavLink>
+            <NavLink to="register" className="nav-link">
               Sign in
-            </button>
+            </NavLink>
           </>
         )}
       </div>

@@ -4,12 +4,16 @@ import { Global } from "../Contexts/Global";
 import ErrorMsg from "../Components/ErrorMsg";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+
 function Register() {
-  const { setErrMessage, errMessage, setRoute, setLoggedName } =
-    useContext(Global);
+  const { setErrMessage, errMessage, setIsLogged } = useContext(Global);
+
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
   const [pswRepeat, setPswRepeat] = useState("");
+
+  const navigate = useNavigate();
 
   async function registerHandler(e) {
     e.preventDefault();
@@ -61,11 +65,13 @@ function Register() {
       .then((res) => {
         console.log(res.data);
         if (res.data.status === "ok") {
-          setLoggedName(res.data.name);
+
+          setIsLogged(res.data.name);
           setName("");
           setPsw("");
           setPswRepeat("");
-          setRoute("login");
+          navigate("/login");
+
         } else {
           setErrMessage("Not correct details");
           setName("");
