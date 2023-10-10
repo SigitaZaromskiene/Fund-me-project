@@ -56,25 +56,18 @@ describe("<Register/>", () => {
     expect(errorMessageElement.textContent).toBe("Klaidele");
   });
 
-  //   test("if successfully registered, Login page appears", async () => {
-  //     render(<MockRegister />);
+  test("if successfully registered, <Login/> page appears", async () => {
+    render(<MockRegister />);
 
-  //     axios.post = jest
-  //       .fn()
-  //       .mockResolvedValue({ data: { name: "Rima", psw: "2222" } });
+    axios.post = jest
+      .fn()
+      .mockResolvedValue({ data: { name: "Rima", psw: "2222" } });
 
-  //     const submitFormBtnElement = screen.getByTestId("btn");
-  //     const loginBtn = screen.getByText("Login");
+    const submitFormBtnElement = screen.getByText("Register");
+    const loginBtn = screen.getByText("Login");
 
-  //     //   fireEvent.change(nameInputElement, { target: { value: "Rima" } });
-  //     //   fireEvent.change(pswInputElement, { target: { value: "2222" } });
-  //     //   fireEvent.change(psw2nputElement, { target: { value: "2222" } });
+    fireEvent.click(submitFormBtnElement);
 
-  //     fireEvent.click(submitFormBtnElement);
-
-  //     expect(loginBtn).toBeVisible();
-  //   });
-  //   const nameInputElement = screen.getByTestId("name");
-  //   const pswInputElement = screen.getByTestId("psw");
-  //   const psw2nputElement = screen.getByTestId("psw2");
+    expect(loginBtn).toBeVisible();
+  });
 });

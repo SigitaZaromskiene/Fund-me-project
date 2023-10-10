@@ -35,8 +35,6 @@ export const GlobalProvider = ({ children }) => {
 
   const [newStory, setNewStory] = useState(null);
 
-  console.log(response);
-
   useEffect(() => {
     axios
       .get("http://localhost:3007/login", { withCredentials: true })

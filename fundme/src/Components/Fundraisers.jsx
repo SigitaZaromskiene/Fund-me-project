@@ -6,7 +6,7 @@ import { Global } from "../Contexts/Global";
 import SmallBtn from "./SmallBtn";
 import DonatedGoal from "./DonatedGoal";
 import AddListDonation from "./AddListDonation";
-import LastDoantions from "./LastDonations";
+import LastDonations from "./LastDonations";
 import ErrorMsg from "./ErrorMsg";
 
 function Fundraisers() {
@@ -37,8 +37,6 @@ function Fundraisers() {
     filteredList = createList.filter((li) => li.donated >= li.goal);
   }
 
-  console.log(filteredList);
-
   return (
     <div className="fundraiser wrapper">
       {message && <ErrorMsg errorMsg={message}></ErrorMsg>}
@@ -50,7 +48,9 @@ function Fundraisers() {
       <ul className="fundraiser__lists">
         {loading && <Loader />}
         {createList.length === 0 && !loading ? (
-          <p style={{ color: "crimson" }}>No fundraisers available</p>
+          <p data-testid="nofundraisers" style={{ color: "crimson" }}>
+            No fundraisers available
+          </p>
         ) : null}
         {filteredList.length === 0 && createList.length !== 0 ? (
           <p style={{ color: "crimson" }}>No fundraisers available</p>
@@ -58,7 +58,7 @@ function Fundraisers() {
 
         {createList.length !== 0
           ? filteredList.map((lis) => (
-              <div key={lis.id} className="fundraiser__lists--list">
+              <div key={lis.id} className="fundraiser__lists--list ">
                 <div className="fundraiser__lists--list--left">
                   <div className="fundraiser__lists--list--left--name">
                     <p>{lis.name}</p>
@@ -73,7 +73,7 @@ function Fundraisers() {
                 </div>
                 <DonatedGoal lis={lis} />
                 <AddListDonation lis={lis}></AddListDonation>
-                <LastDoantions lis={lis}></LastDoantions>
+                <LastDonations lis={lis}></LastDonations>
               </div>
             ))
           : null}

@@ -16,8 +16,6 @@ const MockLogout = () => {
   );
 };
 
-// jest.mock("axios"); // Mock axios here
-
 describe("<Logout />", () => {
   test("after logout btn is pressed, login btn appears", async () => {
     render(<MockLogout />);
@@ -28,6 +26,7 @@ describe("<Logout />", () => {
 
     const logintBtn = await screen.findByTestId("login");
     const signintBtn = await screen.findByTestId("signin");
+
     fireEvent.click(logoutBtn);
 
     expect(logintBtn).toBeVisible();

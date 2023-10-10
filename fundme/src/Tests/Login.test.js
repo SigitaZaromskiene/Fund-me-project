@@ -31,6 +31,7 @@ describe("<Login/>", () => {
     render(<MockLogin />);
 
     const nameInputElement = screen.getByTestId("name");
+
     fireEvent.change(nameInputElement, { target: { value: "la" } });
     expect(nameInputElement.value).toBe("la");
   });

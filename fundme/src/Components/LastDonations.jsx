@@ -8,6 +8,10 @@ function LastDonations({ lis }) {
 
   const list = createList.find((li) => li.id === lis.id);
 
+  if (!list) {
+    return null;
+  }
+
   return (
     <div className="fundraiser__lists--list--right">
       <ul>
@@ -19,7 +23,7 @@ function LastDonations({ lis }) {
       </ul>
 
       <div>
-        <p>{list.donatorName}</p>
+        <p data-testid="dname">{list.donatorName}</p>
         <p>{list.donatorSum} &euro;</p>
       </div>
     </div>

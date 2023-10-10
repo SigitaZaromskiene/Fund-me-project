@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import { GlobalProvider } from "../Contexts/Global";
 import { BrowserRouter } from "react-router-dom";
 import StartFund from "../Components/StartFund";
