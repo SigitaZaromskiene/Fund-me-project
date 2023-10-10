@@ -23,7 +23,7 @@ function Nav() {
           Fundraisers
         </NavLink>
         {loggedName ? (
-          <NavLink to="start" className="nav-link">
+          <NavLink data-testid="startNav" to="start" className="nav-link">
             Start fundraising
           </NavLink>
         ) : null}
@@ -31,15 +31,17 @@ function Nav() {
       <div className="nav__right">
         {loggedName ? (
           <>
-            <p className="hello">Hello, {loggedName}</p>
+            <p className="hello" data-testid="loginname">
+              Hello, {loggedName}
+            </p>
             <Logout></Logout>
           </>
         ) : (
           <>
-            <NavLink to="login" className="nav-link">
+            <NavLink data-testid="login" to="login" className="nav-link">
               Log in
             </NavLink>
-            <NavLink to="register" className="nav-link">
+            <NavLink data-testid="signin" to="register" className="nav-link">
               Sign in
             </NavLink>
           </>

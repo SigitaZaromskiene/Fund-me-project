@@ -1,6 +1,6 @@
 function SmallBtn({ text, action }) {
   return (
-    <button className="small-button" onClick={action}>
+    <button data-testid="btn" className="small-button" onClick={action}>
       {text}
     </button>
   );

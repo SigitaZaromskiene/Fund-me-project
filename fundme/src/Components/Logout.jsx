@@ -20,7 +20,12 @@ function Logout() {
   };
 
   return (
-    <NavLink to="logout" onClick={logoutHandler} className="nav-link">
+    <NavLink
+      data-testid="logout"
+      to="logout"
+      onClick={logoutHandler}
+      className="nav-link"
+    >
       Logout
     </NavLink>
   );

@@ -60,6 +60,7 @@ function StartFund() {
               value={name}
               pattern="[a-zA-Z]*"
               onChange={(e) => setName(e.target.value)}
+              data-testid="name"
             ></input>
           </div>
           <div className="start-fund-form__upper--surname">
@@ -69,6 +70,7 @@ function StartFund() {
               value={surname}
               pattern="[a-zA-Z]*"
               onChange={(e) => setSurname(e.target.value)}
+              data-testid="surname"
             ></input>
           </div>
         </div>
@@ -78,6 +80,7 @@ function StartFund() {
             type="text"
             value={story}
             onChange={(e) => setStory(e.target.value)}
+            data-testid="text"
           ></textarea>
         </div>
         <div className="start-fund-form__upper--goal">
@@ -88,6 +91,7 @@ function StartFund() {
             placeholder="&euro;"
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
+            data-testid="goal"
           ></input>
         </div>
         <SmallBtn text="Publish" action={publishHandler}></SmallBtn>

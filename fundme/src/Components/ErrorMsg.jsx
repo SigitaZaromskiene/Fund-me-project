@@ -2,17 +2,19 @@ import { useContext, useEffect } from "react";
 import { Global } from "../Contexts/Global";
 
 function ErrorMsg({ errorMsg }) {
-  const { setErrMsg } = useContext(Global);
+  const { setErrMessage } = useContext(Global);
 
   useEffect(() => {
     setTimeout(() => {
-      setErrMsg(null);
+      setErrMessage(null);
     }, 5000);
-  }, [setErrMsg]);
+  }, [setErrMessage]);
 
   return (
     <div className="error-message-container">
-      <p className="error-message-container__text">{errorMsg}</p>
+      <p className="error-message-container__text" data-testid="error-message">
+        {errorMsg}
+      </p>
     </div>
   );
 }

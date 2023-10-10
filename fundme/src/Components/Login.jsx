@@ -6,10 +6,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { setErrMessage, setLoggedName, errMessage, setIsLogged } =
-    useContext(Global);
   const [name, setName] = useState("");
   const [psw, setPsw] = useState("");
+
+  const { setErrMessage, setLoggedName, errMessage, setIsLogged } =
+    useContext(Global);
+
+  console.log(setErrMessage);
 
   const navigate = useNavigate();
 
@@ -27,7 +30,6 @@ function Login() {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.data);
         if (res.data.status === "ok") {
           setName("");
           setPsw("");
@@ -51,6 +53,7 @@ function Login() {
             value={name}
             type="text"
             onChange={(e) => setName(e.target.value)}
+            data-testid="name"
           ></input>
         </div>
         <div>
@@ -59,9 +62,10 @@ function Login() {
             value={psw}
             type="number"
             onChange={(e) => setPsw(e.target.value)}
+            data-testid="psw"
           ></input>
         </div>
-        <SmallBtn type="submit" text="Login"></SmallBtn>
+        <SmallBtn data-testid="btn" type="submit" text="Login"></SmallBtn>
       </form>
       {errMessage ? <ErrorMsg errorMsg={errMessage}></ErrorMsg> : null}
     </div>

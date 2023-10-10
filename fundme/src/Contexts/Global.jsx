@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext } from "react";
+import { useState, useEffect } from "react";
 import { useGetFundraisersList } from "../Use/useGetFundraisersList";
 import { useSetDonations } from "../Use/useSetDonations";
 import axios from "axios";
@@ -40,7 +41,6 @@ export const GlobalProvider = ({ children }) => {
     axios
       .get("http://localhost:3007/login", { withCredentials: true })
       .then((res) => {
-        console.log(res.data);
         if (res.data.status === "ok") {
           setIsLogged(true);
           setLoggedName(res.data.name);

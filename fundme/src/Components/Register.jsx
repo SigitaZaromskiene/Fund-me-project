@@ -65,13 +65,11 @@ function Register() {
       .then((res) => {
         console.log(res.data);
         if (res.data.status === "ok") {
-
           setIsLogged(res.data.name);
           setName("");
           setPsw("");
           setPswRepeat("");
           navigate("/login");
-
         } else {
           setErrMessage("Not correct details");
           setName("");
@@ -88,6 +86,7 @@ function Register() {
             value={name}
             type="text"
             onChange={(e) => setName(e.target.value)}
+            data-testid="registername"
           ></input>
         </div>
         <div>
@@ -96,6 +95,7 @@ function Register() {
             value={psw}
             type="number"
             onChange={(e) => setPsw(e.target.value)}
+            data-testid="registerpsw"
           ></input>
         </div>
         <div>
@@ -104,6 +104,7 @@ function Register() {
             value={pswRepeat}
             type="number"
             onChange={(e) => setPswRepeat(e.target.value)}
+            data-testid="psw2"
           ></input>
         </div>
         <SmallBtn type="submit" text="Register"></SmallBtn>
