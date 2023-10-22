@@ -5,15 +5,19 @@ This project is for educational porpuses only.
 
 ## 🎯 Project features/goals
 
--   Using MariaDB 
--   Using useContext, useState, useEffect, custom hooks
--   Using controlled forms
--   Practising SCSS BEM
--   Practising post, get, delete and put methods
--   Login, register and logout features
--   Simple forms validation
--   Practising GIT and GITHUB (branches, pull, merge, push)
--   Responsive design
+🗃️ MariaDB Integration: I've harnessed the power of MariaDB, a robust and secure database solution, to efficiently manage data, ensuring scalability and data integrity for this project.
+
+🔄 React Hooks Mastery: Utilizing React hooks, including useContext, useState, useEffect, and crafting custom hooks, I've established a dynamic foundation that guarantees a smooth and engaging user experience.
+
+📝 Controlled Forms: With controlled forms, user interactions are seamless.
+
+🎨 SCSS BEM Styling: I've embraced SCSS (Sass) with the BEM (Block Element Modifier) methodology for a visually appealing and maintainable design, combining functionality with aesthetics.
+
+📬 HTTP Methods Expertise: My project excels in handling various HTTP methods, including POST, GET, DELETE, and PUT, ensuring seamless data management.
+
+🔐 Authentication Excellence: The project incorporates login, register, and logout features to enhance user security.
+
+✅ Form Validation: To ensure user input accuracy and validity, I've implemented simple yet effective form validation techniques.
 
 
 # Getting Started with Create React App
